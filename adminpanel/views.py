@@ -48,14 +48,13 @@ def single_post(request, post_id):
 @login_required()
 def createpost(request):
     if request.POST:
-
         post = Post()
 
         post.title = request.POST['title']
         post.content = request.POST['content']
         post.which_user = request.user
         post.tags = request.POST['tags']
-        post.category = request.POST['category']
+        post.category = request.POST['example-select']
 
         if request.FILES:
             post.image = request.FILES['image']
