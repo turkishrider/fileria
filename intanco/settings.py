@@ -11,6 +11,8 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 
 AUTHENTICATION_BACKENDS = ('authentication.backends.EmailOrUsernameModelBackend',)
 
+LOGIN_URL = '/login'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
