@@ -68,3 +68,29 @@ def createpost(request):
     c.update(csrf(request))
 
     return render_to_response("admin-panel/create-post.html",c)
+
+
+@login_required()
+def editpost(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.POST:
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.which_user = request.user
+        post.category = request.POST['category']
+
+        post.save()
+
+        return redirect(reverse(home))
+
+    else:
+        c = {"id": post.id, "request": request,
+             'title': post.title,
+             'content': post.content,
+             'which_user': post.which_user,
+             'category': post.category}
+
+        c.update(csrf(request))
+
+    return render(request, 'admin-panel/edit-post.html', c)
