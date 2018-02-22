@@ -34,3 +34,12 @@ def home(request):
                                "request": request,
                                "post_count": post_count,
                                "read_more": 1})
+
+
+@login_required()
+def single_post(request, post_id):
+    root_post = Post.objects.get(id=post_id)
+
+    return render(request, "admin-panel/single-blog-post.html",
+                              {'post': root_post,
+                               'request': request})
