@@ -43,3 +43,28 @@ def single_post(request, post_id):
     return render(request, "admin-panel/single-blog-post.html",
                               {'post': root_post,
                                'request': request})
+
+
+@login_required()
+def createpost(request):
+    if request.POST:
+
+        post = Post()
+
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.which_user = request.user
+        post.tags = request.POST['tags']
+        post.category = request.POST['category']
+
+        if request.FILES:
+            post.image = request.FILES['image']
+
+        post.save()
+
+        return redirect(reverse(home))
+
+    c = {"request": request}
+    c.update(csrf(request))
+
+    return render_to_response("admin-panel/create-post.html",c)
