@@ -22,13 +22,22 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'var/www/intanco/db.sqlite3', # path.join(PROJECT_ROOT, 'db.sqlite3'), # 'var/www/intanco/db.sqlite3'
+        'NAME': path.join(PROJECT_ROOT, 'db.sqlite3'), # 'var/www/intanco/db.sqlite3'
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+MAIL_PASSWD = "intanco1453"
+
+# Email setup
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'intancoapp@gmail.com'
+EMAIL_HOST_PASSWORD = MAIL_PASSWD
+EMAIL_PORT = 587
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
