@@ -1,4 +1,4 @@
-# Django settings for intanco project.
+# Django settings for fileria project.
 
 import os
 from os import path
@@ -118,10 +118,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'intanco.urls'
+ROOT_URLCONF = 'fileria.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'intanco.wsgi.application'
+WSGI_APPLICATION = 'fileria.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),

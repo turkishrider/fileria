@@ -3,8 +3,8 @@ from django.conf import settings
 
 
 urlpatterns = patterns('',
-                       url(r'^$', 'intanco.views.home', name='home'),
-                       url(r'^post/(?P<post_id>\w+)$', 'intanco.views.post', name='post'),
+                       url(r'^$', 'fileria.views.home', name='home'),
+                       url(r'^post/(?P<post_id>\w+)$', 'fileria.views.post', name='post'),
 
                        url(r'^admin-panel$', 'adminpanel.views.home', name='adminhome'),
                        url(r'^create-post$', 'adminpanel.views.createpost', name='createpost'),

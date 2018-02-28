@@ -9,14 +9,15 @@ from django.core.urlresolvers import reverse
 def post(request, post_id):
     root_post = Post.objects.get(id=post_id)
 
-    return render(request, "home/single-post.html",
-                              {'post': root_post,
-                               'request': request})
+    return render(request, "home/blog-post.html",
+                  {'post': root_post,
+                   'request': request})
 
 
 def home(request):
     blog_list = Post.objects.all() # get(is_verified="False")
-    page = request.GET.get('page')
+
+    # page = request.GET.get('page')
 
     # try:
     #     post_count = paginator.page(page)
@@ -29,7 +30,7 @@ def home(request):
     #     # If page is out of range (e.g. 9999), deliver last page of results.
     #     post_count = paginator.page(paginator.num_pages)
 
-    return render_to_response("home/index.html",
+    return render(request, "home/home.html",
                               {"blogs": blog_list,
                                "request": request,
                                "read_more": 1})
