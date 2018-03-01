@@ -135,7 +135,10 @@
                     <div class="block-content">
                         <div class="form-group row">
                             <div class="col-12">
-                                <textarea class="form-control" id="content" name="content" rows="20" placeholder="Post Content"></textarea>
+                                <div id="content_count" style="display:none"></div>
+                                <textarea id="content" name="content" rows="20" cols="100" class="word_count">a b c</textarea>
+
+{#                                <textarea class="form-control" id="content" name="content" rows="20" placeholder="Post Content"></textarea>#}
                             </div>
                         </div>
                     </div>
@@ -225,6 +228,32 @@
         Codebase.helpers(['ckeditor', 'simplemde', 'tags-inputs']);
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+
+        $('.word_count').each(function() {
+            var input = '#' + this.id;
+            var count = input + '_count';
+            $(count).show();
+            word_count(input, count);
+            $(this).keyup(function() { word_count(input, count) });
+        });
+
+    });
+
+    function word_count(field, count) {
+
+        var number = 0;
+        var matches = $(field).val().match(/\b/g);
+        if(matches) {
+            number = matches.length/2;
+        }
+        $(count).text( number + ' word' + (number != 1 ? 's' : '') + ' count');
+
+    }
+</script>
+
 
 </body>
 </html>
